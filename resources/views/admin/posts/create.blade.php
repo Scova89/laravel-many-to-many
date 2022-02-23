@@ -8,7 +8,7 @@
                     <div class="card-header"><h3>Nuovo post</h3></div>
 
                     <div class="card-body">
-                        <form action="{{route("posts.store")}}" method="POST">
+                        <form action="{{route("posts.store")}}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group">
@@ -46,6 +46,11 @@
                                 @error('published')
                                 <div class="alert alert-danger">{{$message}}</div>
                               @enderror
+                            </div>
+
+                            <div class="custom-file mb-3">
+                              <input type="file" class="custom-file-input" id="image" name="image">
+                              <label class="custom-file-label" for="image">Aggiungi immagine</label>
                             </div>
                             
                             <button type="submit" class="btn btn-primary">Crea</button>
