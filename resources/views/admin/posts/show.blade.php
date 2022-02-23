@@ -33,6 +33,8 @@
                             </div>
                         @endif
                         
+                        <div class="mb-3">
+                        </div>  
 
                         {{$post->content}}
                         

@@ -18,7 +18,8 @@ class PostController extends Controller
         "content" => "required",
         "published" => "nullable|accepted",
         "category_id" => "nullable|exists:categories,id",
-        "image" => "nullable|image|mimes:jpeg,jpg,bmp,png|max:2048"
+        "image" => "nullable|image|mimes:jpeg,jpg,bmp,png|max:2048",
+        "tags" => "nullable|exists:tags,id"
     ];
     /**
      * Display a listing of the resource.
@@ -81,6 +82,10 @@ class PostController extends Controller
         }
 
         $newPost->save();
+
+        if(isset($data["tags"])){
+            $newPost->tags()->sync($data["tags"]);
+        }
 
         return redirect()->route("posts.show", $newPost->id);
 
