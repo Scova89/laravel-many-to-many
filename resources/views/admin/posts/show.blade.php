@@ -28,13 +28,20 @@
 
                         @if ($post->category)
                             <div class="mb-3">
-                                <strong>Categoria</strong>
+                                <strong>Categoria:</strong>
                                 {{$post->category->name}}
                             </div>
                         @endif
                         
-                        <div class="mb-3">
-                        </div>  
+                        @if (count($post->tags) > 0)
+                            <div class="mb-3">
+                                <strong>Tags:</strong>
+                                @foreach ($post->tags as $tag)
+                                    <span class="badge badge-primary">{{$tag->name}}</span>
+                                @endforeach
+                                
+                            </div>
+                        @endif 
 
                         {{$post->content}}
                         
